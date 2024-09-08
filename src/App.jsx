@@ -1,9 +1,10 @@
-import { Button } from "./components/ui/button";
-
+import { Outlet } from "react-router-dom";
+import Header from "./components/custom/Header";
 const App = () => {
   return (
     <div>
-      <Button>Click me</Button>
+      <Header />
+      <Outlet />
     </div>
   );
 };
