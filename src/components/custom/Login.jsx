@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+
 import { auth, provider } from "@/utility/firebase";
 import { signInWithPopup } from "firebase/auth";
 export function Login({ button }) {
@@ -27,6 +28,7 @@ export function Login({ button }) {
           name: user.displayName,
         })
       );
+
       window.location.reload();
     } catch (error) {
       console.error("Error during sign-in:", error);

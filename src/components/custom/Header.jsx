@@ -10,10 +10,16 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import toast from "react-hot-toast";
 import TypewriterComponent from "typewriter-effect";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useEffect } from "react";
+
 const Header = () => {
   const data = JSON.parse(localStorage.getItem("user"));
+  useEffect(() => {
+    data && toast.success(`Welcome back ${data.name}!`);
+  }, []);
   const handleLogout = () => {
     localStorage.removeItem("user");
     window.location.reload();
@@ -25,21 +31,25 @@ const Header = () => {
           <Logo />
           <ul className="items-stretch hidden space-x-3 lg:flex">
             {navData.map((item) => (
-              <li className="flex items-center px-4 -mb-1  ">{item.name}</li>
+              <li className="flex items-center px-4 -mb-1 cursor-pointer">
+                {item.name}
+              </li>
             ))}
           </ul>
         </div>
-        <div className="items-center flex-shrink-0 hidden lg:flex">
-          <TypewriterComponent
-            options={{
-              strings: [
-                `<strong><span style="color: #27ae60;">${data.name} 👋</span></strong>`,
-                `<strong><span style="color: #27ae60;">Have a nice day</span></strong>`,
-              ],
-              autoStart: true,
-              loop: true,
-            }}
-          />
+        <div className="items-center flex-shrink-0 hidden lg:flex gap-2">
+          {data && (
+            <TypewriterComponent
+              options={{
+                strings: [
+                  `<strong><span style="color: #007FFF;">${data.name} 👋</span></strong>`,
+                  `<strong><span style="color: #27ae60;">Have a nice day</span></strong>`,
+                ],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          )}
 
           {!data?.isAuthenticated ? (
             <Login
@@ -72,7 +82,7 @@ const Header = () => {
             <SheetContent className="bg-black text-white w-[300px] flex flex-col items-star">
               <div className="flex flex-col gap-4 text-2xl mt-11">
                 {navData.map((item) => (
-                  <li className="flex items-center px-4 -mb-1  ">
+                  <li className="flex items-center px-4 -mb-1 cursor-pointer  ">
                     {item.name}
                   </li>
                 ))}
