@@ -1,11 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
-
 * {
   background-color: black;
-  font-family: Space-Grotesk, sans-serif;
   font-style: normal;
 }
 @layer base {

@@ -5,6 +5,7 @@ import Logo from "@/components/custom/Logo";
 import { Button } from "../ui/button";
 import { Login } from "./Login";
 import { TiThMenu } from "react-icons/ti";
+import { Link } from "react-router-dom";
 import {
   Popover,
   PopoverContent,
@@ -19,15 +20,17 @@ const Header = () => {
     window.location.reload();
   };
   return (
-    <header className="p-4 dark:text-gray-800 text-white">
+    <header className="p-4 text-white">
       <div className="container flex items-center justify-between h-16 mx-auto">
         <div className="flex items-center gap-36">
           <Logo />
           <ul className="items-stretch hidden space-x-3 lg:flex">
             {navData.map((item) => (
-              <li className="flex items-center px-4 -mb-1 cursor-pointer">
-                {item.name}
-              </li>
+              <Link to={item.route}>
+                <li className="flex items-center px-4 -mb-1 cursor-pointer">
+                  {item.name}
+                </li>
+              </Link>
             ))}
           </ul>
         </div>

@@ -3,9 +3,11 @@ const Hero = () => {
     <section className="mb-14">
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
         <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-          <h1 className="text-5xl font-bold leading-none sm:text-6xl">
-            Level Up Your
-            <span className="text-red-600">Tech</span>Career
+          <h1 className="text-4xl font-bold  sm:text-6xl">
+            Level Up
+            <p className="flex">
+              Your <p className="text-red-600 pl-2"> Tech Career</p>
+            </p>
           </h1>
           <p className="mt-6 mb-8 text-lg sm:mb-12">
             Discover the perfect pathway to master any tech skill

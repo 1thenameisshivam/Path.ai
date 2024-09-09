@@ -83,3 +83,30 @@ export const {
   VITE_MESSAGE_SENDER_ID,
   VITE_APP_ID,
 } = import.meta.env;
+
+export const level = [
+  {
+    id: 1,
+    title: "Beginner",
+    desc: "start from scratch",
+    icon: "😊",
+  },
+  {
+    id: 2,
+    title: "Moderate",
+    desc: "spend wisely",
+    icon: "👨‍💻",
+  },
+  {
+    id: 3,
+    title: "advance",
+    desc: "invest in yourself",
+    icon: "🚀",
+  },
+  {
+    id: 4,
+    title: "Experianced",
+    desc: "king level knowledge ",
+    icon: "👑",
+  },
+];
