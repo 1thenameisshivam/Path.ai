@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 export const navData = [
   {
     name: "Home",
@@ -14,6 +15,63 @@ export const navData = [
   {
     name: "About",
     route: "/about",
+  },
+];
+
+export const featuresData = [
+  {
+    name: "AI-Powered",
+    logo: "🤖",
+    description: [
+      "Let our AI analyze and",
+      "suggest personalized learning roadmaps",
+      " for various technologies.",
+    ],
+  },
+  {
+    name: "AI-Assessment",
+    logo: "👨🏻‍🏫",
+    description: [
+      "Use AI-powered quizzes ",
+      "and challenges to evaluate",
+      " yours skill level. ",
+    ],
+  },
+  {
+    name: "Create Paths",
+    logo: "🏔️",
+    description: [
+      "creatte your own path",
+      "of learning any technology",
+      "you want to learn",
+    ],
+  },
+  {
+    name: "Learning Resources",
+    logo: "🪶",
+    description: [
+      "Leverage AI to curate ",
+      "the most effective resources",
+      " for each step of your path.",
+    ],
+  },
+  {
+    name: "Save & Sharing",
+    logo: "↗️",
+    description: [
+      "save and Share your ",
+      "created paths with yor friend",
+      "to help them grow",
+    ],
+  },
+  {
+    name: "Authentication",
+    logo: "👨‍💻",
+    description: [
+      "secure Authentication system",
+      "with google sign in",
+      "firebase",
+    ],
   },
 ];
 

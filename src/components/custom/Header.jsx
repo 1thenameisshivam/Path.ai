@@ -10,16 +10,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import toast from "react-hot-toast";
 import TypewriterComponent from "typewriter-effect";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useEffect } from "react";
-
 const Header = () => {
   const data = JSON.parse(localStorage.getItem("user"));
-  useEffect(() => {
-    data && toast.success(`Welcome back ${data.name}!`);
-  }, []);
   const handleLogout = () => {
     localStorage.removeItem("user");
     window.location.reload();
