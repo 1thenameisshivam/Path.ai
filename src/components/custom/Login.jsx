@@ -13,10 +13,20 @@ import { auth, provider } from "@/utility/firebase";
 import { signInWithPopup } from "firebase/auth";
 export function Login({ button }) {
   const handleLogin = async () => {
-    console.log("login");
     try {
       const data = await signInWithPopup(auth, provider);
-      localStorage.setItem("user", true);
+      const user = data.user;
+      console.log(data);
+      // Store user information in localStorage as an object
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          isAuthenticated: true,
+          email: user.email,
+          profilePic: user.photoURL,
+          name: user.displayName,
+        })
+      );
       window.location.reload();
     } catch (error) {
       console.error("Error during sign-in:", error);

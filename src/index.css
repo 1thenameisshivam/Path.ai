@@ -6,6 +6,7 @@
 * {
   background-color: black;
   font-family: Space-Grotesk, sans-serif;
+  font-style: normal;
 }
 @layer base {
   :root {
