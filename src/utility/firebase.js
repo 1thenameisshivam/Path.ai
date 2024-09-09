@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import {
   VITE_API_KEY,
   VITE_AUTH_DOMAIN,
@@ -11,7 +12,7 @@ import {
 } from "./constant";
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: VITE_API_KEY,
+  apiKey:VITE_API_KEY,
   authDomain: VITE_AUTH_DOMAIN,
   projectId: VITE_PROJECT_ID,
   storageBucket: VITE_STORAGE_BUCCKET,
@@ -21,3 +22,5 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const provider = new GoogleAuthProvider();
