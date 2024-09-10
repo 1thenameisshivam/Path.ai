@@ -25,8 +25,8 @@ const Header = () => {
         <div className="flex items-center gap-36">
           <Logo />
           <ul className="items-stretch hidden space-x-3 lg:flex">
-            {navData.map((item) => (
-              <Link to={item.route}>
+            {navData.map((item, index) => (
+              <Link key={index} to={item.route}>
                 <li className="flex items-center px-4 -mb-1 cursor-pointer">
                   {item.name}
                 </li>
@@ -78,8 +78,11 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent className="bg-black text-white w-[300px] flex flex-col items-star">
               <div className="flex flex-col gap-4 text-2xl mt-11">
-                {navData.map((item) => (
-                  <li className="flex items-center px-4 -mb-1 cursor-pointer  ">
+                {navData?.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center px-4 -mb-1 cursor-pointer  "
+                  >
                     {item.name}
                   </li>
                 ))}

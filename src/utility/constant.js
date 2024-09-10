@@ -99,7 +99,7 @@ export const level = [
   },
   {
     id: 4,
-    title: "Experianced",
+    title: "Expert",
     desc: "king level knowledge ",
     icon: "👑",
   },

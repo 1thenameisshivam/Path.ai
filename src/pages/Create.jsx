@@ -4,7 +4,12 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
+import { chatSession } from "@/utility/gemini";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "@/service/fireStore";
+import { useNavigate } from "react-router-dom";
 const Create = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     tech: "",
     level: "",
@@ -20,12 +25,48 @@ const Create = () => {
       toast.error("All fields are required.");
       return;
     }
+    if (formData.days < 10) {
+      toast.error("Days should be greater than 10.");
+      return;
+    }
+    if (formData.days > 30) {
+      toast.error("Days should be less than 60.");
+      return;
+    }
+    setLoading(true);
+    toast.success("Be Patience Generating Roadmap...");
     const finalPrompt = prompt
       .replace("{react}", formData.tech)
       .replace("{25}", formData.days)
       .replace("{25}", formData.days)
       .replace("{biginer}", formData.level);
+
+    const roadmap = await chatSession.sendMessage(finalPrompt);
+    console.log(JSON.parse(roadmap.response.text()));
+    setLoading(false);
+    saveData(roadmap.response.text());
+    setFormData({
+      tech: "",
+      level: "",
+      days: "",
+    });
   };
+
+  let saveData = async (roadmap) => {
+    setLoading(true);
+    const id = Date.now().toString();
+    const user = JSON.parse(localStorage.getItem("user"));
+    await setDoc(doc(db, "Paths", id), {
+      details: JSON.parse(roadmap),
+      userSelection: formData,
+      email: user?.email,
+      id: id,
+    });
+    setLoading(false);
+    toast.success("Roadmap Generated Successfully");
+    navigate(`/path/${id}`);
+  };
+
   return (
     <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-10">
       <h1 className="font-bold text-3xl text-white">
@@ -51,7 +92,8 @@ const Create = () => {
       </div>
       <div>
         <h2 className="font-medium text-white my-3 text-xl">
-          How many days are you planing your Trip?
+          In how many days you want to learn{" "}
+          {formData.tech ? formData.tech : "your tech"}?
         </h2>
         <input
           className="bg-gray-800 rounded w-full p-2 text-white"
@@ -65,7 +107,9 @@ const Create = () => {
         />
       </div>
       <div>
-        <h2 className="font-medium my-3 text-xl">What is Your budget?</h2>
+        <h2 className="text-white font-medium my-3 text-xl">
+          What is Your level?
+        </h2>
         <div className="grid grid-cols-3 gap-5 mt-5">
           {level.map((option, index) => (
             <div
@@ -77,7 +121,9 @@ const Create = () => {
               key={index}
             >
               <h2 className="text-4xl">{option.icon}</h2>
-              <h2 className="font-bold text-white text-lg">{option.title}</h2>
+              <h2 className="font-bold text-white sm:text-sm lg:text-lg">
+                {option.title}
+              </h2>
               <h2 className="text-gray-500 text-sm">{option.desc}</h2>
             </div>
           ))}
@@ -102,5 +148,4 @@ const Create = () => {
     </div>
   );
 };
-
 export default Create;
