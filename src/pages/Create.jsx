@@ -20,6 +20,7 @@ const Create = () => {
     const data = JSON.parse(localStorage.getItem("user"));
     if (!data?.isAuthenticated) {
       toast.error("Please login to continue.");
+      return;
     }
     if (formData.tech == "" || formData.level == "" || formData.days == "") {
       toast.error("All fields are required.");
@@ -34,7 +35,7 @@ const Create = () => {
       return;
     }
     setLoading(true);
-    toast.success("Be Patience Generating Roadmap...");
+    toast.success("Crafting your personalized learning journey...");
     const finalPrompt = prompt
       .replace("{react}", formData.tech)
       .replace("{25}", formData.days)
@@ -139,7 +140,7 @@ const Create = () => {
           {loading ? (
             <AiOutlineLoading3Quarters className="w-7 h-7 bg-red-600 animate-spin" />
           ) : (
-            "Generate Trip"
+            "Generate"
           )}
         </Button>
       </div>
