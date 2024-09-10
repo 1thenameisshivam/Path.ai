@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { level } from "@/utility/constant";
+import { level, prompt } from "@/utility/constant";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/sonner";
@@ -12,17 +12,19 @@ const Create = () => {
   });
   const [loading, setLoading] = useState(false);
   const handleSubmit = async () => {
-    setLoading(true);
     const data = JSON.parse(localStorage.getItem("user"));
     if (!data?.isAuthenticated) {
       toast.error("Please login to continue.");
-      setLoading(false);
     }
     if (formData.tech == "" || formData.level == "" || formData.days == "") {
       toast.error("All fields are required.");
-      setLoading(false);
       return;
     }
+    const finalPrompt = prompt
+      .replace("{react}", formData.tech)
+      .replace("{25}", formData.days)
+      .replace("{25}", formData.days)
+      .replace("{biginer}", formData.level);
   };
   return (
     <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-10">
@@ -95,6 +97,7 @@ const Create = () => {
           )}
         </Button>
       </div>
+
       <Toaster />
     </div>
   );

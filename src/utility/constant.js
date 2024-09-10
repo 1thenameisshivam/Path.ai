@@ -75,14 +75,8 @@ export const featuresData = [
   },
 ];
 
-export const {
-  VITE_API_KEY,
-  VITE_AUTH_DOMAIN,
-  VITE_PROJECT_ID,
-  VITE_STORAGE_BUCCKET,
-  VITE_MESSAGE_SENDER_ID,
-  VITE_APP_ID,
-} = import.meta.env;
+export const prompt =
+  "you are professional roadmap creater and i want to learn {react} and i am {biginer} and i want to learn in {25} days. you have to generate a full roadmap not outline, for {25} days in array of object in which each object has has multiple things like topics covered ,between how many days, authentic resourse link if possible , vedios link if possible, defficulty level, etc. keep in mind output only in array of object, nothing outside. accept array hear is example [{topic: 'React Fundamentals',days: 1-5,difficulty: 'Beginner',resources: [{type: 'Documentation',title: 'Official React Documentation',link: 'https://reactjs.org/',},],},], optput only array of object no any text outside.";
 
 export const level = [
   {
@@ -110,3 +104,13 @@ export const level = [
     icon: "👑",
   },
 ];
+
+export const {
+  VITE_API_KEY,
+  VITE_AUTH_DOMAIN,
+  VITE_PROJECT_ID,
+  VITE_STORAGE_BUCCKET,
+  VITE_MESSAGE_SENDER_ID,
+  VITE_APP_ID,
+  VITE_GEMINI_API_KEY,
+} = import.meta.env;
