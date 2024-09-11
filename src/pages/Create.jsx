@@ -132,6 +132,7 @@ const Create = () => {
       </div>
       <div className="my-10 flex justify-end">
         <Button
+          variant="destructive"
           onClick={() => handleSubmit()}
           type={"submit"}
           disabled={loading}
