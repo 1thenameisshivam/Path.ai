@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Hero = () => {
   return (
     <section className="mb-14">
@@ -15,20 +17,18 @@ const Hero = () => {
             with our curated learning roadmaps.
           </p>
           <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-            <a
-              rel="noopener noreferrer"
-              href="#"
+            <Link
+              to={"/about"}
               className="px-8 py-3 text-lg font-semibold rounded bg-red-600 dark:text-gray-50"
             >
               Know More
-            </a>
-            <a
-              rel="noopener noreferrer"
-              href="#"
+            </Link>
+            <Link
+              to={"/create"}
               className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-800"
             >
               Explore
-            </a>
+            </Link>
           </div>
         </div>
         <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">

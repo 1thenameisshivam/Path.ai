@@ -5,7 +5,7 @@ import Logo from "@/components/custom/Logo";
 import { Button } from "../ui/button";
 import { Login } from "./Login";
 import { TiThMenu } from "react-icons/ti";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Popover,
   PopoverContent,
@@ -13,7 +13,12 @@ import {
 } from "@/components/ui/popover";
 import TypewriterComponent from "typewriter-effect";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useStatus } from "@/Hooks/useStatus";
 const Header = () => {
+  const status = useStatus();
+  const navigate = useNavigate();
+  console.log(status);
+  if (!status) return navigate("/offline");
   const data = JSON.parse(localStorage.getItem("user"));
   const handleLogout = () => {
     localStorage.removeItem("user");

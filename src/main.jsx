@@ -8,6 +8,7 @@ import Error from "./pages/Error.jsx";
 import Create from "./pages/Create.jsx";
 import Path from "./pages/Path.jsx";
 import Roadmaps from "./pages/Roadmaps.jsx";
+import Offline from "./pages/Offline.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/path/:id",
         element: <Path />,
+      },
+      {
+        path: "/offline",
+        element: <Offline />,
       },
     ],
   },
