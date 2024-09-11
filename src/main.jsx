@@ -7,6 +7,7 @@ import Home from "./pages/Home.jsx";
 import Error from "./pages/Error.jsx";
 import Create from "./pages/Create.jsx";
 import Path from "./pages/Path.jsx";
+import Roadmaps from "./pages/Roadmaps.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/create",
         element: <Create />,
+      },
+      {
+        path: "/roadmaps",
+        element: <Roadmaps />,
       },
       {
         path: "/path/:id",

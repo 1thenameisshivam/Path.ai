@@ -7,21 +7,17 @@ import { toast } from "sonner";
 import { useState } from "react";
 import Jumbotron from "@/components/custom/Jumbotron";
 import Timeline from "@/components/custom/Timeline";
-
 const Path = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
-
   console.log(id);
 
   useEffect(() => {
     fetchData(id);
   }, [id]);
-
   const fetchData = async (id) => {
     const docRef = doc(db, "Paths", id);
     const docSnap = await getDoc(docRef);
-    console.log(docSnap.data());
     if (docSnap.exists()) {
       setData(docSnap.data());
     } else {

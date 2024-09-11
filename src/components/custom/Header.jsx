@@ -79,12 +79,11 @@ const Header = () => {
             <SheetContent className="bg-black text-white w-[300px] flex flex-col items-star">
               <div className="flex flex-col gap-4 text-2xl mt-11">
                 {navData?.map((item, index) => (
-                  <li
-                    key={index}
-                    className="flex items-center px-4 -mb-1 cursor-pointer  "
-                  >
-                    {item.name}
-                  </li>
+                  <Link key={index} to={item.route}>
+                    <li className="flex items-center px-4 -mb-1 cursor-pointer  ">
+                      {item.name}
+                    </li>
+                  </Link>
                 ))}
               </div>
               {!data?.isAuthenticated ? (

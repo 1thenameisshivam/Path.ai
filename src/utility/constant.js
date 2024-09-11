@@ -9,8 +9,8 @@ export const navData = [
     route: "/create",
   },
   {
-    name: "Paths",
-    route: "/paths",
+    name: "Roadmaps",
+    route: "/roadmaps",
   },
   {
     name: "About",
