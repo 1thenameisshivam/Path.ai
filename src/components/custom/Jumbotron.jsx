@@ -14,7 +14,17 @@ const Jumbotron = ({ days, level, tech }) => {
             </p>
             <div className="flex items-center mt-4">
               <div className="mr-4">
-                <Button variant="secondary">Start Learning</Button>
+                <Button
+                  variant="secondary"
+                  onClick={() => {
+                    return window.scrollTo({
+                      top: window.innerHeight / 2,
+                      behavior: "smooth",
+                    });
+                  }}
+                >
+                  Start Learning
+                </Button>
               </div>
             </div>
           </div>

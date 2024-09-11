@@ -5,7 +5,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
+import { Button } from "../ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import ReactPlayer from "react-player/lazy";
 const Timeline = ({ details }) => {
   return (
     <section className="text-white">
@@ -40,8 +46,38 @@ const Timeline = ({ details }) => {
                         <AccordionTrigger>
                           You can check some referances releted your topic.
                         </AccordionTrigger>
-                        <AccordionContent>
-                          Yes. It adheres to the WAI-ARIA design pattern.
+                        <AccordionContent className="flex gap-2">
+                          {data.resources.map((resource, index) =>
+                            resource.type.toLowerCase().includes("video") ? (
+                              <div key={index}>
+                                <Popover className="bg-transparent">
+                                  <PopoverTrigger>
+                                    <Button
+                                      variant="destructive"
+                                      className="bg-red-600"
+                                    >
+                                      {resource.type}
+                                    </Button>
+                                  </PopoverTrigger>
+                                  <PopoverContent className="bg-transparent w-full">
+                                    <ReactPlayer url={resource.link} />
+                                  </PopoverContent>
+                                </Popover>
+                              </div>
+                            ) : (
+                              <div key={index}>
+                                <Button
+                                  onClick={() =>
+                                    window.open(resource.link, "_blank")
+                                  }
+                                  variant="destructive"
+                                  className="bg-red-600"
+                                >
+                                  {resource.type}
+                                </Button>
+                              </div>
+                            )
+                          )}
                         </AccordionContent>
                       </AccordionItem>
                     </Accordion>
