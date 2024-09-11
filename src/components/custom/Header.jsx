@@ -30,13 +30,23 @@ const Header = () => {
         <div className="flex items-center gap-36">
           <Logo />
           <ul className="items-stretch hidden space-x-3 lg:flex">
-            {navData.map((item, index) => (
-              <Link key={index} to={item.route}>
-                <li className="flex items-center px-4 -mb-1 cursor-pointer">
-                  {item.name}
-                </li>
-              </Link>
-            ))}
+            {navData.map((item, index) =>
+              item.name != "Roadmaps" ? (
+                <Link key={index} to={item.route}>
+                  <li className="flex items-center px-4 -mb-1 cursor-pointer">
+                    {item.name}
+                  </li>
+                </Link>
+              ) : (
+                data && (
+                  <Link key={index} to={item.route}>
+                    <li className="flex items-center px-4 -mb-1 cursor-pointer">
+                      {item.name}
+                    </li>
+                  </Link>
+                )
+              )
+            )}
           </ul>
         </div>
         <div className="items-center flex-shrink-0 hidden lg:flex gap-2">
